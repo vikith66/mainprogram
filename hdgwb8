@@ -1,0 +1,221 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package student;
+
+import java.util.Scanner;
+
+public class StdMain {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of students:");
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            StudentView view = new StudentView();
+            Student model = addInfo();
+            StudentController controller = new StudentController(model, view);
+            controller.updateView();
+        }
+    }
+
+    private static Student addInfo() {
+        Student std = new Student();
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Enter the Name:");
+        std.setName(sc.nextLine());
+        System.out.println("Enter the Roll No:");
+        std.setRollno(sc.nextLine());
+        
+        System.out.println("Enter the Mark1:");
+        std.setMark1(sc.nextInt());
+        System.out.println("Enter the Mark2:");
+        std.setMark2(sc.nextInt());
+        System.out.println("Enter the Mark3:");
+        std.setMark3(sc.nextInt());
+        return std;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package student;
+
+public class Student {
+    private String studentName;
+    private String studentRollno;
+    private Integer mark1;
+    private Integer mark2;
+    private Integer mark3;
+
+    public String getName() {
+        return studentName;
+    }
+
+    public void setName(String name) {
+        this.studentName = name;
+    }
+
+    public String getRollno() {
+        return studentRollno;
+    }
+
+    public void setRollno(String rollno) {
+        this.studentRollno = rollno;
+    }
+
+    public Integer getMark1() {
+        return mark1;
+    }
+
+    public void setMark1(Integer mark1) {
+        this.mark1 = mark1;
+    }
+
+    public Integer getMark2() {
+        return mark2;
+    }
+
+    public void setMark2(Integer mark2) {
+        this.mark2 = mark2;
+    }
+
+    public Integer getMark3() {
+        return mark3;
+    }
+
+    public void setMark3(Integer mark3) {
+        this.mark3 = mark3;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package student;
+
+public class StudentController {
+    private Student model;
+    private StudentView view;
+
+    public StudentController(Student model, StudentView view) {
+        this.model = model;
+        this.view = view;
+    }
+
+    public void setStudentName(String name) {
+        model.setName(name);
+    }
+
+    public String getStudentName() {
+        return model.getName();
+    }
+
+    public void setStudentRollno(String rollno) {
+        model.setRollno(rollno);
+    }
+
+    public String getStudentRollno() {
+        return model.getRollno();
+    }
+
+    public void setStudentMark1(Integer mark1) {
+        model.setMark1(mark1);
+    }
+
+    public Integer getMark1() {
+        return model.getMark1();
+    }
+
+    public void setStudentMark2(Integer mark2) {
+        model.setMark2(mark2);
+    }
+
+    public Integer getMark2() {
+        return model.getMark2();
+    }
+
+    public void setStudentMark3(Integer mark3) {
+        model.setMark3(mark3);
+    }
+
+    public Integer getMark3() {
+        return model.getMark3();
+    }
+
+    public void updateView() {
+        view.printStdDetails(model.getName(), model.getRollno(), model.getMark1(), model.getMark2(), model.getMark3());
+    }
+}
+
+
+
+
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package student;
+
+public class StudentView {
+    public void printStdDetails(String studentName, String studentRollno, Integer mark1, Integer mark2, Integer mark3) {
+        System.out.println("Student Details");
+        System.out.println("Name: " + studentName);
+        System.out.println("Student Rollno: " + studentRollno);
+        System.out.println("Subject Mark1: " + mark1);
+        System.out.println("Subject Mark2: " + mark2);
+        System.out.println("Subject Mark3: " + mark3);
+        
+        int total = mark1 + mark2 + mark3;
+        float percentage = total / 3.0f;
+        String grade;
+        
+        if (mark1 < 35 || mark2 < 35 || mark3 < 35) {
+            grade = "Fail";
+        } else {
+            if (percentage > 90) {
+                grade = "A";
+            } else if (percentage <= 90 && percentage > 80) {
+                grade = "B";
+            } else if (percentage <= 80 && percentage > 70) {
+                grade = "C";
+            } else if (percentage <= 70 && percentage > 60) {
+                grade = "D";
+            } else {
+                grade = "E";
+            }
+        }
+        
+        System.out.println("Total: " + total);        
+        System.out.println("Percentage: " + percentage +"%");
+        System.out.println("Grade: " + grade);
+    }
+}
