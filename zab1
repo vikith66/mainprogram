@@ -1,0 +1,143 @@
+package student;
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class Student {
+    private static final String DB_URL = "jdbc:mysql://localhost/studentdetails";
+    private static final String USER = "root";
+    private static final String PASSWORD = "";
+
+    public static void main(String args[]) {
+        try {
+            Scanner sc = new Scanner(System.in);
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            int choice;
+            do {
+                System.out.println("\nMENU:");
+                System.out.println("1.Add New Record");
+                System.out.println("2.Display All Record");
+                System.out.println("3.Update Record");
+                System.out.println("4.Delete Record");
+                System.out.println("5.Exit");
+                System.out.println("Enter your choice");
+                choice = sc.nextInt();
+                switch (choice) {
+                    case 1:
+                        addRecord(connection, sc);
+                        break;
+                    case 2:
+                        displayRecord(connection);
+                        break;
+                    case 3:
+                        updateStudentAddress(connection, sc);
+                        break;
+                    case 4:
+                        deleteRecordByRegNo(connection, sc);
+                        break;
+                    case 5:
+                        System.out.println("Exiting Program");
+                        break;
+                    default:
+                        System.out.println("Invalid Choice!");
+                }
+            } while (choice != 5);
+        } catch (SQLException e) {
+            System.err.println("Error...:" + e.getMessage());
+        }
+    }
+
+    public static void addRecord(Connection connection, Scanner scanner) {
+        System.out.println("Enter Student RegNo:");
+        int stRegno = scanner.nextInt();
+        System.out.println("Enter Student Name:");
+        String stName = scanner.next();
+        System.out.println("Enter Student DoB:");
+        String stDob = scanner.next();
+        System.out.println("Enter Student Address:");
+        String stAdd = scanner.next();
+        System.out.println("Enter Student Class:");
+        String stClass = scanner.next();
+        System.out.println("Enter Student Course:");
+        String stCourse = scanner.next();
+        try {
+            String query = "SELECT * FROM student WHERE regNo=?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, stRegno);
+            ResultSet rowsAffected = statement.executeQuery();
+            if (rowsAffected.next()) {
+                System.out.println("Record Already Inserted");
+            } else {
+                query = "INSERT INTO student(regno,name,dob,sadd,sclass,course) VALUES (?,?,?,?,?,?)";
+                statement = connection.prepareStatement(query);
+                statement.setInt(1, stRegno);
+                statement.setString(2, stName);
+                statement.setString(3, stDob);
+                statement.setString(4, stAdd);
+                statement.setString(5, stClass);
+                statement.setString(6, stCourse);
+                statement.executeUpdate();
+                System.out.println("Record Added Successfully");
+                statement.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("Error adding record:" + e.getMessage());
+        }
+    }
+
+    public static void displayRecord(Connection connection) {
+        try {
+            String query = "SELECT * FROM student";
+            Statement statement = (Statement) connection.createStatement();
+            ResultSet resultset = statement.executeQuery(query);
+            System.out.println("\nRECORDS:");
+            while (resultset.next()) {
+                int no = resultset.getInt("regno");
+                String name = resultset.getString("name");
+                String dob = resultset.getString("dob");
+                String sadd = resultset.getString("sadd");
+                String sclass = resultset.getString("sclass");
+                String course = resultset.getString("course");
+                System.out.println("Rollno:" + no + ",Name:" + name + ",DoB:" + dob + ",Address:" + sadd + ",Class:" +
+                        sclass + ",Course:" + course + "");
+            }
+            resultset.close();
+            statement.close();
+        } catch (SQLException e) {
+            System.out.println("Error displaying records:" + e.getMessage());
+        }
+    }
+
+    public static void updateStudentAddress(Connection connection, Scanner scanner) {
+        try {
+            System.out.println("Enter Student Regno who's address to update:");
+            int stRegno = scanner.nextInt();
+            System.out.println("Enter student address:");
+            String stAdd = scanner.next();
+            String query = "UPDATE student SET sadd=? WHERE regno=?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, stAdd);
+            statement.setInt(2, stRegno);
+            statement.executeUpdate();
+            System.out.println("Student address update successfully");
+            statement.close();
+        } catch (SQLException e) {
+            System.out.println("Error updating student address:" + e.getMessage());
+        }
+    }
+
+    public static void deleteRecordByRegNo(Connection connection, Scanner scanner) {
+        try {
+            System.out.println("Enter Student Regno to delete:");
+            int stRegno = scanner.nextInt();
+            String query = "DELETE FROM student WHERE regNo=?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, stRegno);
+            statement.executeUpdate();
+            System.out.println("Student record deleted successfully");
+            statement.close();
+        } catch (SQLException e) {
+            System.out.println("Error deleting the record:" + e.getMessage());
+        }
+    }
+}
