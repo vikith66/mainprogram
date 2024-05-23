@@ -1,0 +1,110 @@
+<%-- 
+    Document   : displaystudent.jsp
+    Created on : 23 May 2024, 7:00:19 am
+    Author     : vikit
+--%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="pckindex.Student"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Student Details</title>
+</head>
+<body>
+    <h1>Student Details</h1>
+    <%
+        String name = request.getParameter("name");
+        int rollno = Integer.parseInt(request.getParameter("rollno"));
+        String cls = request.getParameter("cls");
+        String sec = request.getParameter("sec");
+
+        Student stu = new Student();
+        stu.setName(name);
+        stu.setRollNo(rollno);
+        stu.setCls(cls);
+        stu.setSec(sec);
+
+        // Output the student details
+        System.out.println("Student Name: " + stu.getName());
+        System.out.println("Roll No: " + stu.getRollNo());
+    %>
+    <p>Name: <%= stu.getName() %></p>
+    <p>Roll No: <%= stu.getRollNo() %></p>
+    <p>Class: <%= stu.getCls() %></p>
+    <p>Section: <%= stu.getSec() %></p>
+</body>
+</html>
+
+
+
+
+<%-- 
+    Document   : studentgui.jsp
+    Created on : 23 May 2024, 6:59:29 am
+    Author     : vikit
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Enter Student Details</title>
+</head>
+<body>
+    <h1>Enter Student Details</h1>
+    <form action="displaystudent.jsp" method="post">
+        Name: <input type="text" name="name"><br>
+        Roll No: <input type="number" name="rollno"><br>
+        Class: <input type="text" name="cls"><br>
+        Section: <input type="text" name="sec"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+
+
+package pckindex;
+
+public class Student {
+    private String name;
+    private int rollno;
+    private String cls;
+    private String sec;
+
+    public Student() {}
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getRollNo() {
+        return rollno;
+    }
+
+    public void setRollNo(int rollno) {
+        this.rollno = rollno;
+    }
+
+    public String getCls() {
+        return cls;
+    }
+
+    public void setCls(String cls) {
+        this.cls = cls;
+    }
+
+    public String getSec() {
+        return sec;
+    }
+
+    public void setSec(String sec) {
+        this.sec = sec;
+    }
+}
