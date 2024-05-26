@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        
+        body {
+            background: linear-gradient(to right, #2a255b, #555183);
+            overflow: hidden;
+        }
+
+        .box {
+            width: 1300px;
+            height: 700px;
+            background-color: #15122f;
+            border-radius: 20px;
+            position: relative;
+            top: 80px;
+            left: 100px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+        }/*
+        .box2 {
+            width: 800px;
+            height: 320px;
+            background-color: #19162b;
+            border-radius: 30px 30px 0 0;
+            position: relative;
+            top: 380px;
+            left: 200px;
+            box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.2);
+        }*/
+        .box3 {
+            width: 230px;
+            height: 630px;
+            background-color: #19162b;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            top: 70px;
+            left: 1035px;
+            box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+        h2{
+            background: -webkit-linear-gradient(left, #FF007A, #4563FF); /* Set the text color to white */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Poppins', sans-serif; /* Set the font family to Poppins */
+            text-align: center; /* Center-align the text */
+            font-size: 30px; /* Set the font size to 30px */
+            position: relative;
+            top: 25px;
+            transition: transform 0.3s;
+        }
+        h2:hover {
+            transform: scale(0.8);
+        }
+
+        h3{
+            background: -webkit-linear-gradient(left, #FF007A, #4563FF); /* Set the text color to white */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Poppins', sans-serif; /* Set the font family to Poppins */
+            text-align: center; /* Center-align the text */
+            font-size: 27px; /* Set the font size to 30px */
+            position: relative;
+            top: -50px;
+            transition: transform 0.3s;
+        }
+        h3:hover {
+            transform: scale(0.8);
+        }
+        .box3-text {
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            position: relative;
+            top: -30px;
+            transition: transform 0.3s;
+        }
+        .box3-text:hover {
+            transform: scale(0.95);
+        }
+        .bar {
+            width: 150px;
+            height: 100%;
+            background-color: #19162b;
+            border-radius: 20px 0 0 20px;
+            position: absolute;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+            top: 0;
+            left: 0;
+        }
+        .text {
+            position: absolute;
+            top: 22%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-family: 'Nexa', sans-serif;
+            font-size: 30px;
+        }
+
+        .gradient-text {
+            background: -webkit-linear-gradient(left, #FF007A, #4563FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .white-text {
+            color: white;
+        }
+        .logo {
+            width: 160px;
+            height: 160px;
+            background-image: url("./icons/logo.png");
+            background-size: cover;
+            position: absolute;
+            top: -5px;
+            left: 55%;
+            transform: translateX(-50%);
+            transition: transform 0.3s;
+        }
+        .logo:hover {
+            transform: translateX(-50%) scale(0.9);
+        }
+        .icon {
+            width: 40px;
+            height: 40px;
+            background-image: url("./icons/icon.png");
+            background-size: cover;
+            position: absolute;
+            top: 190px;
+            left: 50px;
+            transform: translateY(-50%);
+        }
+        .icon1 {
+            width: 40px;
+            height: 40px;
+            background-image: url("./icons/icon1.png");
+            background-size: cover;
+            position: absolute;
+            top: 270px;
+            left: 50px;
+            transform: translateY(-50%);
+        }
+        .icon2 {
+            width: 40px;
+            height: 40px;
+            background-image: url("./icons/icon2.png");
+            background-size: cover;
+            position: absolute;
+            top: 350px;
+            left: 50px;
+            transform: translateY(-50%);
+        }
+        .icon3 {
+            width: 40px;
+            height: 40px;
+            background-image: url("./icons/icon3.png");
+            background-size: cover;
+            position: absolute;
+            top: 550px;
+            left: 50px;
+            transform: translateY(-50%);
+        }
+        .icon4 {
+            width: 40px;
+            height: 40px;
+            background-image: url("./icons/icon4.png");
+            background-size: cover;
+            position: absolute;
+            top: 635px;
+            left: 50px;
+            transform: translateY(-50%);
+        }
+        .icon, .icon1, .icon2, .icon3, .icon4 {
+            transition: transform 0.3s; /* This will add a smooth transition effect */
+        }
+
+        .icon:hover, .icon1:hover, .icon2:hover, .icon3:hover, .icon4:hover {
+            transform: translateY(-50%) scale(1.2); /* This will scale up the icon on hover */
+            cursor: pointer; 
+            background-color: #19162b;/* This will change the cursor to a pointer on hover */
+        }
+        .search-box {
+            position: absolute;
+            top: 18px;/*set position of search box here*/
+            left: 180px;
+            background-color: #15122f;
+        }
+
+        .search-box input {
+            background-image: url("./icons/search.png");
+            background-position: 10px center;
+            background-repeat: no-repeat;
+            background-size: 30px;
+            padding-left: 40px;
+            background-color: #1c182f;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 250px;
+            height: 20px;
+            border-radius: 30px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+            padding-left: 40px; /* Increased the padding to accommodate the search icon */
+        }
+
+        .search-box label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .search-box:hover input{
+            background-color: #0f0d19;
+        }
+        .search-icon {
+            width: 20px;
+            height: 20px;
+        }
+        .animated-button {
+            position: absolute;
+            background-color: #1c182f; 
+            top: 310px; /* Change this to adjust the distance from the top */
+            left: 490px;/* Change this to your desired color */
+            border: none;
+            border-radius: 50px; /* Change this to adjust the roundness of the edges */
+            color: white;
+            cursor: pointer;
+            font-size: 16px; /* Change this to adjust the size of the text */
+            padding: 15px 32px; /* Change this to adjust the size of the button */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s; 
+            width: 190px;
+            height: 50px;/* Change this to adjust the duration of the animation */
+            z-index: 1;
+        }
+
+        .animated-button:hover {
+            background-color: #231d3b; /* Change this to your desired hover color */
+        }
+
+        .animated-button:active {
+            transform: scale(0.95); /* Change this to adjust the size of the button when clicked */
+        }
+        .btnstroke {
+            width: 196px;
+            height: 56px;
+            background: -webkit-linear-gradient(left, #FF007A, #4563FF);
+            border-radius: 30px;
+            position: absolute;
+            top: 307px;
+            left: 487px;
+            box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+        .input-box {
+            position: absolute;
+            top: 240px;/*set position of search box here*/
+            left: 320px;
+            background-color: #15122f;
+        }
+        .input-box input{
+            background-image: url("./icons/prosearch.png");
+            background-position: 12px center;/*SEARCH ICON SIZE*/
+            background-repeat: no-repeat;
+            background-size: 25px;/*SET SIZE YOUR SEARCH ICON*/
+            padding-left: 60px;
+            background-color: #1c182f;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 200px;
+            height: 30px;
+            border-radius: 30px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+            padding-left: 40px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .input-box:hover input{
+            background-color: #0f0d19;
+        }
+        .input1-box {
+            position: absolute;
+            top: 240px;/*set position of search box here*/
+            left: 600px;
+            background-color: #15122f;
+        }
+        .input1-box input{
+            background-image: url("./icons/prosearch.png");
+            background-position: 12px center;
+            background-repeat: no-repeat;
+            background-size: 25px;
+            padding-left: 60px;
+            background-color: #1c182f;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 200px;
+            height: 30px;
+            border-radius: 30px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+            padding-left: 40px;
+        }
+        .input1-box:hover input{
+            background-color: #0f0d19;
+        }
+        .contain1 {
+            background-image: url("./icons/vs.png");
+            background-position: 45px center;
+            background-repeat: no-repeat;
+            background-size: 140px; /* VERSUS ICON SIZE */
+            width: 230px;
+            height: 270px;
+            background-color: #1c182fbd;
+            border-radius: 20px;
+            position: relative;
+            top: -230px;
+            left: 200px;
+            box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease;
+        }
+
+
+        .contain1 .grad1 {
+            font-weight: bold;
+            font-size: 25px; /* Set your desired font size */
+            font-family: Arial, sans-serif; /* Set your desired font stack */
+            background: -webkit-linear-gradient(left, #ef6af1, #ebe4e7) ;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            text-align: center;
+            position: relative;
+            top: 20px; 
+            left: 30px;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .contain1 .grad2 {
+            font-weight: bold;
+            font-size: 24px; /* Set your desired font size */
+            font-family: Arial, sans-serif; /* Set your desired font stack */
+            background: -webkit-linear-gradient(left, #ebe4e7, #00aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            text-align: center;
+            position: relative;
+            top: 40px; 
+            left: 2px;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+        .contain1:hover {
+            transform: scale(1.05); /* Change the value to your desired scale factor */
+        }
+
+
+    /*Contain 2*/
+        .contain2 {
+            background-image: url("./icons/vs.png");
+            background-position: 45px center;
+            background-repeat: no-repeat;
+            background-size: 140px; /* VERSUS ICON SIZE */
+            width: 230px;
+            height: 270px;
+            background-color: #1c182fbd;
+            border-radius: 20px;
+            position: relative;
+            top: -500px;
+            left: 480px;
+            box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
+        }
+        .contain2 .grad3 {
+            font-weight: bold;
+            font-size: 25px; /* Set your desired font size */
+            font-family: Arial, sans-serif; /* Set your desired font stack */
+            background: -webkit-linear-gradient(left, #ef6af1, #ebe4e7) ;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            text-align: center;
+            position: relative;
+            top: 20px; 
+            left: 30px;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        }
+        .contain2 .grad4 {
+            font-weight: bold;
+            font-size: 24px; /* Set your desired font size */
+            font-family: Arial, sans-serif; /* Set your desired font stack */
+            background: -webkit-linear-gradient(left, #ebe4e7, #00aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            text-align: center;
+            position: relative;
+            top: 40px; 
+            left: 2px;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+        .contain2:hover {
+            transform: scale(1.05); /* Change the value to your desired scale factor */
+        }
+
+        /*Contain 3*/
+        .contain3 {
+            background-image: url("./icons/vs.png");
+            background-position: 45px center;
+            background-repeat: no-repeat;
+            background-size: 140px; /* VERSUS ICON SIZE */
+            width: 230px;
+            height: 270px;
+            background-color: #1c182fbd;
+            border-radius: 20px;
+            position: relative;
+            top: -770px;
+            left: 760px;
+            box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
+        }
+        .contain3 .grad5 {
+            font-weight: bold;
+            font-size: 25px; /* Set your desired font size */
+            font-family: Arial, sans-serif; /* Set your desired font stack */
+            background: -webkit-linear-gradient(left, #ef6af1, #ebe4e7) ;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            text-align: center;
+            position: relative;
+            top: 20px; 
+            left: 30px;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        }
+        .contain3 .grad6 {
+            font-weight: bold;
+            font-size: 24px; /* Set your desired font size */
+            font-family: Arial, sans-serif; /* Set your desired font stack */
+            background: -webkit-linear-gradient(left, #ebe4e7, #00aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            text-align: center;
+            position: relative;
+            top: 50px; 
+            left: 35px;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+        .contain3:hover {
+            transform: scale(1.05); /* Change the value to your desired scale factor */
+        }
+        
+    </style>
+   
+</head>
+<body>
+    <div class="box">
+        <div class="text">
+            <h1>
+              <span class="gradient-text">We Make Your</span>
+              <span class="white-text">Choice Easier</span>
+            </h1>
+        </div>
+        <div class="box3">
+            <h2>Explore</h2>
+            <div class="box3-text">
+              <p>One-stop destination for comparing any products, from fashion to technology, groceries to beauty essentials, and everything in between!</p>
+            </div>
+            <h3>Recent Searches</h3>
+          </div>
+        
+        <div class="bar">
+            <div data-aos="zoom-in" data-aos-delay="100">
+                    <div class="logo"></div>               
+            </div>
+            <div data-aos="zoom-out" data-aos-delay="300">
+                <a href="file:///D:/2AMTEAR/Project/merge/index.html">
+                    <div class="icon"></div>
+                </a>
+            </div>
+            <div data-aos="zoom-out" data-aos-delay="500">
+                <div class="icon1"></div>
+            </div>
+            <div data-aos="zoom-out" data-aos-delay="700">
+                <div class="icon2"></div>
+            </div>
+            <div data-aos="zoom-out" data-aos-delay="900">
+                <div class="icon3"></div>
+            </div>
+            <div data-aos="zoom-out" data-aos-delay="1100">
+                <div class="icon4"></div>
+            </div> 
+        </div>
+
+            <div class="search-box" data-aos="fade-right">
+                <input type="text" placeholder="Search a Product" >
+                <a href="#">
+                    <i class="search"></i>
+                </a>
+            </div>
+
+        
+            <!-- <div class="contain1">
+                <span class="grad1">Iphone 15 Pro <br>Max</span><br><br><br><br><br>
+                <span class="grad2">Samsung Galaxy S24 Ultra</span>
+            </div>      
+            <div class="contain2">
+                <span class="grad3">Realme T300 <br>Buds</span><br><br><br><br><br>
+                <span class="grad4">CMF by Nothing Buds</span>
+            </div>
+
+    
+            <div class="contain3">
+                    <span class="grad5">Asus TUF <br>Gaming F15</span><br><br><br><br><br>
+                    <span class="grad6">Acer Aspire 7</span>
+            </div> -->
+        
+            <form action="/compare" method="post">
+                <div class="input-box" data-aos="fade-down">
+                    <input type="text" name="p1" class="inp1" placeholder="Enter Product Name 1" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input1-box" data-aos="fade-down" data-aos-delay="100">
+                    <input type="text" name="p2" class="inp2" placeholder="Enter Product Name 2" required>
+                    <i class='bx bxs-lock-alt' ></i>
+                </div>
+                <button class="animated-button" data-aos="fade-down">Compare</button>
+                <div class="btnstroke" data-aos="fade-down"></div>
+            </form>
+        </div>
+    </div>
+    <script>/*npm install aos (TERMINAL)IS IMPORTANT*/
+        
+        AOS.init({
+            offset:1,
+            duration: 600,
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.refresh();
+        });
+        window.addEventListener('load', AOS.refresh);
+    </script>
+</body>
+</html>
